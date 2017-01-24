@@ -6,8 +6,14 @@
         <link rel="stylesheet" type="text/css" href="/styles/main.css">
     </head>
     <body>
-      <h1>Заголовок</h1>
-      <p>Текста</p>
+      <header>
+        <h1>Новостная лента</h1>
+        <p>Самые свежие новости тут</p>
+        <a href="../controler/addnews.php">Добавить новость</a>
+
+      </header>
+
+
 
     </body>
 </html>

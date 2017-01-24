@@ -1,7 +1,2 @@
-# 1 step
-sadfa
-asdf
-asdfasdfasdf
-asdffda
-sdf
-asdfadsf
+# Учусь ПХП
+создаю новостную ленту помаленьку
