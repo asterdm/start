@@ -1,3 +1,2 @@
 <?php
-echo 'Usin git';
- ?>
+include __DIR__.'/view/page.php';

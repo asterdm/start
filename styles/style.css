@@ -1,0 +1,44 @@
+* {
+    padding: 0;
+    margin: 0;
+  /*сбрасываем все настройки*/
+}
+body{
+  font-size: 12px;
+  line-height: 1.5;
+}
+p {
+    font-size: 1em; /* эквивалентно 12px */
+    line-height: 1.5em;
+    margin: 1.5em 0;
+}
+h1 {
+    font-size:  2em; /* эквивалентно 24px */
+    line-height: 1.5em;
+    margin:  1.5em 0;
+}
+h2 {
+    font-size:  1.8333em; /* эквивалентно 22px */
+    line-height: 1.6364em;
+    margin:  1.6364em 0;
+}
+h3 {
+    font-size:  1.6667em; /* эквивалентно 20px */
+    line-height: 1.8em;
+    margin:  1.8em 0;
+}
+h4 {
+    font-size:  1.5em; /* эквивалентно 18px */
+    line-height:  1em;
+    margin:  2em 0;
+}
+h5 {
+    font-size:  1.3333em; /* эквивалентно 16px */
+    line-height:  1.125em;
+    margin:  2.25em 0;
+}
+h6 {
+    font-size:  1.1667em; /* эквивалентно 14px */
+    line-height:  1.2857em;
+    margin:  2.5714em 0;
+}
