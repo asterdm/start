@@ -42,3 +42,8 @@ h6 {
     line-height:  1.2857em;
     margin:  2.5714em 0;
 }
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  width: 900px;
+}
