@@ -4,5 +4,5 @@
 // echo $time = time();
 // echo date('D, d M Y H:i:s',$time);
 // var_dump($_SERVER_REQUEST_TIME);
-$a=[fg=>'sdfsdf', dssd=>'34344'];
-echo $a[dssd];
+if (!empty($_POST)) echo 'no';
+ ?>

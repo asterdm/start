@@ -1,15 +1,18 @@
 <div class="container">
+  <?php foreach ($newslist as $newslist):?>
   <div class="newsList-block">
     <div class="newslist-title">
-      <h4>Заголовок</h4>
+      <h4><?php echo $newslist[title]?></h4>
     </div>
     <div class="newslist-description">
-      <p>Краткое описание</p>
+      <p><?php echo $newslist[text]?></p>
     </div>
     <div class="newslist-link">
-      <a href="#">Ссылка на новость</a>
-
+      <a href="<?php echo $newslist[url]?>">Ссылка на новость</a>
     </div>
-
+    <div class="newslist-date">
+      <p><?php echo $newslist[date]?></p>
+    </div>
   </div>
+  <?php endforeach; ?>
 </div>
