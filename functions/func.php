@@ -1,7 +1,8 @@
 <?php
-function NewsSortbyDate($data)
+function NewsDBquery($query)
 {
-  # code...
-  return ['Дата','Заголовок',''];
+  $link = mysqli_connect('localhost', 'root', '', 'news');
+  mysqli_query($link, $query);
+  mysqli_close($link);
 }
  ?>

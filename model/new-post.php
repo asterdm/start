@@ -1,4 +1,6 @@
 <?php
+require_once __DIR__.'/../functions/func.php';
+
 function TablefromPost()
 {
   # code...
@@ -7,11 +9,13 @@ date_default_timezone_set('Europe/Moscow');
 isset($_POST);
 $loadtable=$_POST;
 $loadtable[date]=time();
-$loadtable[url]=__DIR__.'?news_id='.time();
+$loadtable[url]='?news_id='.time();
 return $loadtable;
 }
-function TabletoBD($table)
+function TabletoBD($t)
 {
-  mysqli_connect( ['localhost', 'root', '', $database, $port, $socket]);
+  $query="INSERT INTO news(title, text, date, url) VALUES ('$t[title]', '$t[content]', '$t[date]', '$t[url]')";
+  NewsDBquery($query);
+  return true;
 }
  ?>

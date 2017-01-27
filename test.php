@@ -4,7 +4,5 @@
 // echo $time = time();
 // echo date('D, d M Y H:i:s',$time);
 // var_dump($_SERVER_REQUEST_TIME);
-  $link = mysqli_connect('localhost', 'root', '', 'news');
-  $sql='INSERT INTO news(title, text, date, url) VALUES (asdf,sdaf,45488,/sdf/sdf/.sd)';
-  var_dump($link)
- ?>
+$a=[fg=>'sdfsdf', dssd=>'34344'];
+echo $a[dssd];
