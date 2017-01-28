@@ -8,10 +8,10 @@
       <p><?php echo $newslist[text]?></p>
     </div>
     <div class="newslist-link">
-      <a href="<?php echo $newslist[url]?>">Ссылка на новость</a>
+      <a href="http://start/news<?php echo $newslist[url]?>">news<?php echo $newslist[url] ?></a>
     </div>
     <div class="newslist-date">
-      <p><?php echo $newslist[date]?></p>
+      <p><?php echo date('D, d M Y H:i:s',$newslist[date])?></p>
     </div>
   </div>
   <?php endforeach; ?>

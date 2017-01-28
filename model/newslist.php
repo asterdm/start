@@ -1,9 +1,25 @@
 <?php
+require __DIR__.'/../functions/func.php';
+
+
 function NewsgetList()
 {
-  $table=[
-    [title=>'Заголовок',text=>'Текст новости',date=>'14.04.2016',url=>'start/news?news_id=12312321'],[title=>'Заголовок2',text=>'Текст новости2',date=>'14.04.2016',url=>'start/news?news_id=12312321']
-  ];
+  $query = ConnectDBNews('SELECT * FROM news');
+  while ($row = mysqli_fetch_assoc($query)) {
+    $table[] = $row;
+  }
+
+  return $table;
+}
+
+
+function NewsTableDB()
+{
+  $query = ConnectDBNews('SELECT * FROM news');
+  while ($row = mysqli_fetch_assoc($query)) {
+    $table[] = $row;
+  }
+  DisconnectDBNews();
   return $table;
 }
  ?>

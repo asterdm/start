@@ -6,4 +6,5 @@ if (!TablefromPost()) {
 }
 $table=TablefromPost();
 TabletoBD($table);
+header("Location: /index.php");
  ?>
