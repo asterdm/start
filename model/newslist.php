@@ -27,6 +27,23 @@ function NewsById($date)
 {
   $query = ConnectDBNews("SELECT title, text, date FROM news WHERE date=$date");
   $row = mysqli_fetch_assoc($query);
+  DisconnectDBNews();
   return $row;
+}
+
+function CreateLoadTable()
+{
+  date_default_timezone_set('Europe/Moscow');
+  $loadtable=$_POST;
+  $loadtable[date]=time();
+  $loadtable[url]='?news_id='.time();
+  return $loadtable;
+}
+
+function LoadTableBD($t)
+{
+  $query="INSERT INTO news(title, text, date, url) VALUES ('$t[title]', '$t[content]', '$t[date]', '$t[url]')";
+  NewsDBquery($query);
+  return true;
 }
  ?>
