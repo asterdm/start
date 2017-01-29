@@ -4,7 +4,7 @@ require __DIR__.'/../functions/func.php';
 
 function NewsgetList()
 {
-  $query = ConnectDBNews('SELECT * FROM news');
+  $query = ConnectDBNews('SELECT * FROM news ORDER BY date DESC');
   while ($row = mysqli_fetch_assoc($query)) {
     $table[] = $row;
   }
@@ -21,5 +21,12 @@ function NewsTableDB()
   }
   DisconnectDBNews();
   return $table;
+}
+
+function NewsById($date)
+{
+  $query = ConnectDBNews("SELECT title, text, date FROM news WHERE date=$date");
+  $row = mysqli_fetch_assoc($query);
+  return $row;
 }
  ?>
