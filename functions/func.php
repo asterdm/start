@@ -1,20 +1,20 @@
 <?php
 function NewsDBquery($query)
 {
-  $link = mysqli_connect('localhost', 'root', '', 'news');
-  mysqli_query($link, $query);
-  mysqli_close($link);
+  $link =new mysqli('localhost', 'root', '', 'news');
+  $link->query($query);
+  $link->close();
 }
 
 function ConnectDBNews($query)
 {
-  $link = mysqli_connect('localhost', 'root', '', 'news');
-  return mysqli_query($link, $query);
+  $link =new mysqli('localhost', 'root', '', 'news');
+  return $link->query($query);
 }
 
 function DisconnectDBNews()
 {
-  $link = mysqli_connect('localhost', 'root', '', 'news');
-  mysqli_close($link);
+  $link = new mysqli_connect('localhost', 'root', '', 'news');
+  $link->close();
 }
  ?>

@@ -11,7 +11,7 @@ else {
   header("Location: /index.php");
 }
 
-$news = NewsById($news_id);
+$news = Article::News_by_date($news_id);
 
 // var_dump($news);
 include __DIR__.'/view/header.php';
