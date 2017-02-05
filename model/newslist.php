@@ -34,7 +34,7 @@ class Article
     $db->close();
     return $table;
   }
-  public static function News_by_date($date)
+  public static function news_by_date($date)
   {
     $db= new mysqli(HOST,USER,PASS,DB);
     $result= $db->query("SELECT title, text, date FROM news WHERE date=$date");
@@ -42,22 +42,24 @@ class Article
     $db->close();
     return $row;
   }
+  public function load()
+  {
+    $db= new mysqli(HOST,USER,PASS,DB);
+    $result= $db->query("INSERT INTO news(title, text, date, url) VALUES ('$this->title', '$this->text', '$this->date', '$this->url')");
+    $db->close();
+  }
 }
 
 
-function CreateLoadTable()
+function news_load()
 {
   date_default_timezone_set('Europe/Moscow');
-  $loadtable=$_POST;
-  $loadtable[date]=time();
-  $loadtable[url]='?news_id='.time();
-  return $loadtable;
+  $loadtable= new Article;
+  $loadtable->title = $_POST[title];
+  $loadtable->text = $_POST[text];
+  $loadtable->date = time();
+  $loadtable->url='?news_id='.time();
+  $loadtable->load();
 }
 
-function LoadTableBD($t)
-{
-  $query="INSERT INTO news(title, text, date, url) VALUES ('$t[title]', '$t[content]', '$t[date]', '$t[url]')";
-  NewsDBquery($query);
-  return true;
-}
  ?>

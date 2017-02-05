@@ -9,8 +9,8 @@ require_once __DIR__.'/model/newslist.php';
 
 
 if (!empty($_POST)) {
-  $table = CreateLoadTable();
-  LoadTableBD($table);
+
+  news_load();
 }
 include __DIR__.'/view/header.php';
 include __DIR__.'/view/addnewsform.php';
