@@ -1,8 +1,18 @@
 <?php
-require_once __DIR__.'/model/newslist.php';
 
 
-$newslist = Article::news_list();
-// var_dump($newslist);
-include __DIR__.'/view/header.php';
-include __DIR__.'/view/newslist.php';
+$ctrl = isset($_GET['ctrl']) ? $_GET['ctrl'] : 'News';
+$act = isset($_GET['act']) ? $_GET['act'] : 'all';
+
+
+$ctrl .= 'Controller';
+$metod = 'action_'.$act;
+
+require_once __DIR__.'/controllers/'.$ctrl.'.php';
+
+$news = new $ctrl;
+$news->$metod();
+
+
+
+ ?>

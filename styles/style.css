@@ -6,6 +6,7 @@
 body{
   font-size: 12px;
   line-height: 1.5;
+  background-color: #464646;
 }
 p {
     font-size: 1em; /* эквивалентно 12px */
