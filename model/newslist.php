@@ -13,32 +13,29 @@ require __DIR__.'/../functions/func.php';
 /**
  *
  */
-class Article
+class News extends Article
 {
-  public $title;
-  public $text;
-  public $date;
-  public $url;
-  function add_news()
-  {
-    # берем строку и кладем в базу данных
-  }
-  public static function news_list()
-  {
-    # получаем список всех новостей
-    $db= new mysqli(HOST,USER,PASS,DB);
-    $result= $db->query('SELECT * FROM news ORDER BY date DESC');
-    while ($row = $result->fetch_object(Article)) {
-      $table[] = $row;
-    }
-    $db->close();
-    return $table;
-  }
+    protected static $table_name = 'news';
+  
+//  public static function news_list()
+//  {
+//    # получаем список всех новостей
+//    //$db= new mysqli(HOST,USER,PASS,DB);
+//    //$result= $db->query('SELECT * FROM news ORDER BY date DESC');
+//      $result = DB::sql_res('SELECT * FROM news ORDER BY date DESC');
+//    while ($row = $result->fetch_object(News)) {
+//      $table[] = $row;
+//    }
+//    //$db->close();
+//    return $table;
+//  }
+  
+  
   public static function news_by_date($date)
   {
     $db= new mysqli(HOST,USER,PASS,DB);
     $result= $db->query("SELECT title, text, date FROM news WHERE date=$date");
-    $row = $result->fetch_object(Article);
+    $row = $result->fetch_object(News);
     $db->close();
     return $row;
   }
@@ -54,7 +51,7 @@ class Article
 function news_load()
 {
   date_default_timezone_set('Europe/Moscow');
-  $loadtable= new Article;
+  $loadtable= new News;
   $loadtable->title = $_POST[title];
   $loadtable->text = $_POST[text];
   $loadtable->date = time();

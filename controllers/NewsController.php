@@ -8,7 +8,7 @@ class NewsController
 
   public function action_all()
   {
-    $newslist = Article::news_list();
+    $newslist = News::getlist();
     include __DIR__.'/../view/header.php';
     include __DIR__.'/../view/newslist.php';
   }
@@ -16,7 +16,7 @@ class NewsController
   public function action_one_news()
   {
     $news_id = $_GET[news_id];
-    $news = Article::News_by_date($news_id);
+    $news = News::news_by_date($news_id);
     include __DIR__.'/../view/news.php';
   }
 
