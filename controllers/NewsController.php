@@ -9,8 +9,11 @@ class NewsController
   public function action_all()
   {
     $newslist = News::getlist();
-    include __DIR__.'/../view/header.php';
-    include __DIR__.'/../view/newslist.php';
+    $view = new View;
+    $view->newslist = $newslist;
+    $view->display('newslist.php');
+    //include __DIR__.'/../view/header.php';
+    //include __DIR__.'/../view/newslist.php';
   }
 
   public function action_one_news()

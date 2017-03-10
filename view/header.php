@@ -9,7 +9,7 @@
       <header>
         <h1>Новостная лента</h1>
         <!-- <p>Самые свежие новости тут</p> -->
-        <a href="/addnews.php">Добавить новость</a>
+        <a href="/index.php?ctrl=News&act=add_news">Добавить новость</a>
         <a href="/index.php">На главную</a>
 
       </header>

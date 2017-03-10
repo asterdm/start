@@ -33,17 +33,17 @@ class News extends Article
   
   public static function news_by_date($date)
   {
-    $db= new mysqli(HOST,USER,PASS,DB);
-    $result= $db->query("SELECT title, text, date FROM news WHERE date=$date");
-    $row = $result->fetch_object(News);
-    $db->close();
+    //$db= new mysqli(HOST,USER,PASS,DB);
+    $result = DB::sql_res("SELECT title, text, date FROM news WHERE date=$date");
+    $row = $result->fetch_object();
+    //$db->close();
     return $row;
   }
   public function load()
   {
-    $db= new mysqli(HOST,USER,PASS,DB);
-    $result= $db->query("INSERT INTO news(title, text, date, url) VALUES ('$this->title', '$this->text', '$this->date', '$this->url')");
-    $db->close();
+    //$db= new mysqli(HOST,USER,PASS,DB);
+    $result= DB::sql_res("INSERT INTO news(title, text, date, url) VALUES ('$this->title', '$this->text', '$this->date', '$this->url')");
+    //$db->close();
   }
 }
 
@@ -55,7 +55,7 @@ function news_load()
   $loadtable->title = $_POST[title];
   $loadtable->text = $_POST[text];
   $loadtable->date = time();
-  $loadtable->url='?news_id='.time();
+  $loadtable->url='news_id='.time();
   $loadtable->load();
 }
 
