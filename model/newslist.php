@@ -42,21 +42,14 @@ class News extends Article
   public function load()
   {
     //$db= new mysqli(HOST,USER,PASS,DB);
+    $this->title = $_POST[title];
+    $this->text = $_POST[text];
+    $this->date = time();
+    $this->url='news_id='.time();
     $result= DB::sql_res("INSERT INTO news(title, text, date, url) VALUES ('$this->title', '$this->text', '$this->date', '$this->url')");
     //$db->close();
   }
 }
 
-
-function news_load()
-{
-  date_default_timezone_set('Europe/Moscow');
-  $loadtable= new News;
-  $loadtable->title = $_POST[title];
-  $loadtable->text = $_POST[text];
-  $loadtable->date = time();
-  $loadtable->url='news_id='.time();
-  $loadtable->load();
-}
 
  ?>

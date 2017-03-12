@@ -1,7 +1,7 @@
 <?php
 
 
-abstract class Article
+abstract class Article 
 {
     public $header;
     public $title;
