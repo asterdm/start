@@ -24,6 +24,7 @@ class View {
     
     public function display($template = 'newslist.php') {
         
+        
         foreach ($this->data as $key => $value){
             
             $$key = $value;

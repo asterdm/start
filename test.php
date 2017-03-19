@@ -1,38 +1,70 @@
 <?php
-define('HOST', 'localhost');
-define('USER', 'root');
-define('PASS', '');
-define('DB', 'news');
 
-/**
- *
- */
-class DB
-   {
-     protected static $db;
-     protected static $res;
+$table = [df=>[jn=>'sdgdfg', jo=>'jisdh', sdf=>'lkishfvxfg'], sdfssd=>'sss55sdf5sdf'];
 
+$config = parse_ini_file('./database.ini');
+$db_name = 'news';
+          //var_dump($config);die;
+$dsn = $config['driver'].':host='.$config['host'].';dbname='.$db_name.';charset=utf8';
+$dbh = new PDO($dsn, $config['username'], $config['password']);
+//$dbh->getAttribute();
+$attributes = array(
+    "AUTOCOMMIT", "ERRMODE", "CASE", "CLIENT_VERSION", "CONNECTION_STATUS",
+    "ORACLE_NULLS", "PERSISTENT", "PREFETCH", "SERVER_INFO", "SERVER_VERSION",
+    "TIMEOUT"
+);
 
-      public static function sql($query)
-      {
-          self::$db= new mysqli(HOST,USER,PASS,DB);
-          self::$res = self::$db->query($query);
-          self::$db->close();
-          return self::$res;
+foreach ($attributes as $val) {
+    echo "PDO::ATTR_$val: ";
+    echo $dbh->getAttribute(constant("PDO::ATTR_$val")) . "\n";
+}
 
+//var_dump($dbh);
+die;
 
-      }
+class myIterator implements Iterator{
+    public $a = 1;
+    public $b = 2;
+    public $c = 3;
+    private $data = [];  
+
+    public function __construct($table) {
+        $this->data = $table;
     }
 
+    public function rewind() {
+        ////data_dump(__METHOD__);
+        reset($this->data);
+    }
 
-$query = "SELECT * FROM news WHERE id=15";
+    public function current() {
+        $data = current($this->data);
+        return $data;
+    }
 
-$sql = DB::sql($query);
+    public function key() {
+        $data = key($this->data);
+        return $data;
+    }
 
-$result = $sql->fetch_assoc();
+    public function next() {
+        $data = next($this->data);
+        return $data;
+    }
 
-var_dump($result);
+    public function valid() {
+        $key = key($this->data);
+        $data = ($key !== NULL && $key !== FALSE);
+        return $data;
+    }
+}
+
+$it = new myIterator($table);
+
+foreach($it as $key => $value) {
+    var_dump($key, $value);
+    echo "\n";
+}
+    
 
 
-
- ?>

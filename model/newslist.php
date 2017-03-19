@@ -17,18 +17,7 @@ class News extends Article
 {
     protected static $table_name = 'news';
   
-//  public static function news_list()
-//  {
-//    # получаем список всех новостей
-//    //$db= new mysqli(HOST,USER,PASS,DB);
-//    //$result= $db->query('SELECT * FROM news ORDER BY date DESC');
-//      $result = DB::sql_res('SELECT * FROM news ORDER BY date DESC');
-//    while ($row = $result->fetch_object(News)) {
-//      $table[] = $row;
-//    }
-//    //$db->close();
-//    return $table;
-//  }
+
   
   
   public static function news_by_date($date)
@@ -52,4 +41,4 @@ class News extends Article
 }
 
 
- ?>
+

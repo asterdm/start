@@ -49,10 +49,20 @@ h6 {
 }
 .newsList-block {
 display: inline-block;
-min-width: 200px;
-max-width: 280px;
+width: 240px;
+height: 330px;
 float: left;
-margin-left: 20px;
+margin: 20px;
 margin-right: 20px;
+background-repeat: no-repeat;
+background-image: url(/../images/novosti-fon.png); /* Цвет фона */
+background-size: cover;
+box-shadow: 0 0 10px rgba(0,0,0,0.5); /* Параметры тени */
+padding: 10px;
 
+}
+
+.newslist-description {
+
+      min-height: 105px;
 }
