@@ -2,7 +2,7 @@
   <?php foreach ($newslist as $newslist):?>
   <div class="newsList-block">
     <div class="newslist-title">
-      <h4><?php echo $newslist->title ?></h4>
+        <a href="http://start/index.php?ctrl=news&act=one_news&news_id=<?php echo $newslist->getID() ?>"><h4><?php echo $newslist->title ?></h4></a>
     </div>
     <div class="newslist-description">
       <p><?php echo $newslist->text?></p>

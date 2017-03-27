@@ -37,4 +37,10 @@ class DBPDO {
         return $sth->fetchAll(PDO::FETCH_CLASS, $this->class_name);
   
     }
+    public function execute($sql, $param) {
+        
+        $sth = $this->dbh->prepare($sql);
+        $sth->execute($param);
+        
+    }
 }

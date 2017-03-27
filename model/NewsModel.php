@@ -13,11 +13,15 @@
  */
 class NewsModel extends AbstractModel{
     
-    public $id;
+    private $id;
     public $title;
     public $text;
     public $date;
     public $url;
     protected static $table = 'news';
+    
+    public function getID() {
+        return $this->id;
+    }
     
 }

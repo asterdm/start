@@ -29,8 +29,15 @@ class NewsController
 
   public function action_add_news()
   {
-    $load_news =  new News;
-    empty($_POST) ?: $load_news->load();
+      if (!empty($_POST)){
+    $load_news =  new NewsModel;
+    $load_news->title = $_POST['title'];
+    $load_news->text = $_POST['text'];
+    $load_news->date = time();
+    $load_news->url = 'news_id='.time();
+    $load_news->insert();
+      }
+    
     $view = new View;
     $view->display('header.php');
     $view->display('addnewsform.php');

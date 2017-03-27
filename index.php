@@ -1,6 +1,7 @@
 <?php
 require_once '/autoload.php';
 
+
 $ctrl = isset($_GET['ctrl']) ? $_GET['ctrl'] : 'News';
 $act = isset($_GET['act']) ? $_GET['act'] : 'all';
 
