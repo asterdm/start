@@ -43,4 +43,8 @@ class DBPDO {
         $sth->execute($param);
         
     }
+    public function getDBH() {
+        return $this->dbh;
+        
+    }
 }

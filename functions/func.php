@@ -21,4 +21,8 @@
 function podstan($n) {
             return ':'.$n;
         }
+ 
+function podstanSET($n) {
+            return $n.'=:'.$n;
+        }
  ?>

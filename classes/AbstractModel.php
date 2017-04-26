@@ -12,6 +12,8 @@
  * @author yugin
  */
 class AbstractModel {
+    
+    
     protected static $table;
     
     public static function getTableName() {
@@ -39,9 +41,10 @@ class AbstractModel {
     }
     
     public function insert() {
+        //метод вставляет в таблицу все не приватные свойства дочерних классов 
         
-        $value_data = get_object_vars($this);//свойства объекта
-        $keys_data =  array_keys($value_data);//ключи свойств
+        $value_data = get_object_vars($this);//свойства объекта и их значения
+        $keys_data =  array_keys($value_data);//массив свойств
         
 
         $vars = implode(", ",$keys_data);
@@ -52,13 +55,42 @@ class AbstractModel {
         $db_data = new DBPDO();
         $db_data->setClassName(get_called_class());
         $sql = 'INSERT INTO '.static::$table." ($vars) VALUES ($vars_pod)";
-        $db_data->execute($sql, $param);
+        $res = $db_data->execute($sql, $param);
         
+        //очень тонкий момоент, чтобы достучаться до приватного свойства пришлось в дочернем классе прописать методы получения и записи ID
+        $this->setID($db_data->getDBH()->lastInsertId());
     }
-    public function delete($id) {
+    
+    public function delete() {
         
         $db_data = new DBPDO();
         $sql = 'DELETE FROM '.static::$table.' WHERE id=:id';
-        $db_data->execute($sql, [':id' => $id]);
+        $db_data->execute($sql, [':id' => $this->getID()]);
     }
+    
+    public function update() {
+        
+        $value_data = get_object_vars($this);//названия свойств объекта и их значения
+        $keys_data =  array_keys($value_data);//массив названия свойств
+        
+
+        $vars = implode(", ",$keys_data);
+        $vars_pod = implode(", ",array_map("podstanSET", $keys_data));
+        
+        $param = array_combine(array_map("podstan", $keys_data), $value_data);
+        
+        
+        $db_data = new DBPDO();
+        $sql = 'UPDATE '.static::$table.' SET'."($vars_pod)".' WHERE id=:id';
+        $param[':id'] = $this->getID();
+        
+        $db_data->execute($sql, $param);
+        
+    }
+    
+    static public function findByColumn($column, $value){
+        
+        
+    }
+
 }
